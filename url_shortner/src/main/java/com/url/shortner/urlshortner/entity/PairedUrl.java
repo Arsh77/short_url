@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity(name="PAIRED_URL")
 public class PairedUrl {
+
 	@Id
 	@Column(name="id", nullable=false)
 	private String id;

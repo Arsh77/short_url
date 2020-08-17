@@ -33,7 +33,9 @@ public class ShortUrlService {
 	private static final String char62 = "abcAB9CDdef8stX7YuvFGHIJw5EKL54Mhijkl3mnoN2Ogp1STPQqrRUxyzVWZ0";
 
 	public Url setUrl(String longurl) {
+
 		countRowGenerated = generatedRepository.count();
+
 		try {
 			Url url = new Url();
 			GeneratedShortUrl gsu = generatedRepository.findOneShorturl();
@@ -45,6 +47,7 @@ public class ShortUrlService {
 			url.setUrl(gsu.getShorturl());
 			generatedRepository.delete(gsu);
 			--countRowGenerated;
+
 			return url;
 
 		} catch (Exception e) {
@@ -59,6 +62,7 @@ public class ShortUrlService {
 		}
 	}
 
+
 	private void addGeneratedUrl() {
 		Set<GeneratedShortUrl> setGSU= new HashSet<GeneratedShortUrl>();
 		while (setGSU.size()<maxRowCountGeneratedUrl) {
@@ -68,6 +72,8 @@ public class ShortUrlService {
 		}
 		generatedRepository.saveAll(setGSU);
 	}
+
+
 
 	private void addGeneratedOneUrl() {
 		int c = 0;
@@ -81,6 +87,7 @@ public class ShortUrlService {
 			c++;
 		}
 	}
+
 
 	private String generateRandomUrl() {
 		c1 = c1 % 62;
